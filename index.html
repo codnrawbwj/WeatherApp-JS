@@ -20,7 +20,7 @@
     <div class="card">
         <div class="search">
             <input type="text" placeholder="enter city name" spellcheck="false">
-            <button> <i class="fa-solid fa-magnifying-glass"></i></button>
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div class="weather">
             <img src="images/clouds.png" alt="cloud image icon" class="weather-icon">
@@ -37,14 +37,39 @@
                 <div class="col">
                     <img src="images/wind.png" alt="humidity image">
                     <div>
-                        <p class="wind">15km/h</p>
+                        <p class="wind">15m/s</p>
                         <p>Wind Speed</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<script>
+const apiKey = 'f07b59eaaf50dde46d031e69a47545c3';
+const apiURL = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=';
+
+const searchBox = document.querySelector(".search input")
+const searchBtn = document.querySelector(".search button")
+
+async function checkWeather(city){
+    const response = await fetch(apiURL + city + `&appid=${apiKey}`);
+    var data = await response.json();
+
+    console.log(data);
+
+    document.querySelector('.city').innerHTML = data.name;
+    document.querySelector('.temp').innerHTML = Math.ceil(data.main.temp) + '°C';
+    document.querySelector('.humidity').innerHTML = Math.ceil(data.main.humidity) + '%';
+    document.querySelector('.wind').innerHTML = data.wind.speed + 'm/s';
+
     
+}
+
+searchBtn.addEventListener("click", ()=>{
+    checkWeather(searchBox.value);
+})
+
+</script>
 </body>
 </html>
 
