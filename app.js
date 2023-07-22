@@ -23,10 +23,11 @@ async function checkWeather(city){
         document.querySelector('.wind').innerHTML = data.wind.speed + 'm/s';
 
         try {
-            document.querySelector('.weather-icon').src = "images/" + data.weather[0].main + ".png";
+            document.querySelector('.weather-icon').src = "./images/" + data.weather[0].main + ".png";
+            console(data.weather[0].main);
         }
         catch(err){
-            document.querySelector('.weather-icon').src = "images/clouds.png"
+            document.querySelector('.weather-icon').src = "./images/clouds.png"
             console.log("Undefined weather type")
         }
 
