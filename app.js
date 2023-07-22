@@ -1,5 +1,5 @@
 const apiKey = 'f07b59eaaf50dde46d031e69a47545c3';
-const apiURL = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=';
+const apiURL = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&q=';
 
 const searchBox = document.querySelector(".search input")
 const searchBtn = document.querySelector(".search button")
@@ -18,7 +18,7 @@ async function checkWeather(city){
     else {
         document.querySelector(".error").style.display = 'none';
         document.querySelector('.city').innerHTML = data.name;
-        document.querySelector('.temp').innerHTML = Math.ceil(data.main.temp) + '°C';
+        document.querySelector('.temp').innerHTML = Math.ceil(data.main.temp) + '°F';
         document.querySelector('.humidity').innerHTML = Math.ceil(data.main.humidity) + '%';
         document.querySelector('.wind').innerHTML = data.wind.speed + 'm/s';
 
